@@ -1,6 +1,3 @@
-__version__ = "0.0.0-auto.0"
-__repo__ = "https://github.com/benevip/CircuitPython_ifttt.git"
-
 # The MIT License (MIT)
 #
 # Copyright (c) 2019 Ben Everard for HackSpace magazine
@@ -50,13 +47,14 @@ Implementation Notes
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/benevip/CircuitPython_ifttt.git"
 
-#pylint: disable-msg=too-many-arguments
+#pylint: disable-msg=too-many-arguments,too-many-branches
 def send_message(wifi, secrets, event, debug=False,
                  reset_wifi_on_error=True, value1=None,
                  value2=None, value3=None):
+"""sent a message to the IFTTT webhook service"""
     sent = False
     if 'ifttt_key' not in secrets:
-        if debug: 
+        if debug:
             print("you need to add ifttt_key to your secrets file")
         return
     while not sent:
@@ -72,7 +70,7 @@ def send_message(wifi, secrets, event, debug=False,
                 payload['value3'] = value3
             url = "https://maker.ifttt.com/trigger/" + event + "/with/key/" + \
                 secrets['ifttt_key']
-            if debug: 
+            if debug:
                 print(url)
             response = wifi.post(url, json=payload)
             response.close()
