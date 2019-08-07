@@ -44,10 +44,11 @@ You'll need a secrets file that includes your SSID, Wifi password and ifttt key.
 	secrets = {
 		'ssid' : 'XXX',
 		'password' : 'XXX',
-		'timezone' : "XXX",
 		'ifttt_key' : 'XXX'
 		}
 
+You can get your IFTTT key from the mobile app by going into webhook > settings. Note that this changes every time you go into web hook settings, and this will cause your app to fail silently. If you have a problem with webhooks not triggering, you might want to check this. I assume you should be able to get the key from the website as well, but I can't find it on there anywhere.
+		
 Here's the code for the example:
 
 .. code-block:: python
