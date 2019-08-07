@@ -1,5 +1,3 @@
-# imports
-
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/benevip/CircuitPython_ifttt.git"
 
@@ -38,7 +36,7 @@ Implementation Notes
 
 **Hardware:**
 
-* Should work with circuit Python boards with ESP32 wifi. 
+* Should work with circuit Python boards with ESP32 wifi.
   Tested with a PyPortal -- https://www.adafruit.com/product/4116
 
 **Software and Dependencies:**
@@ -52,7 +50,8 @@ Implementation Notes
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/benevip/CircuitPython_ifttt.git"
 
-def send_message(wifi, secrets, event, debug=False, 
+#pylint: disable-msg=too-many-arguments
+def send_message(wifi, secrets, event, debug=False,
                  reset_wifi_on_error=True, value1=None, 
                  value2=None, value3=None):
     sent = False
@@ -61,22 +60,28 @@ def send_message(wifi, secrets, event, debug=False,
         return
     while not sent:
         try:
-            if debug: print("Posting data")
+            if debug: 
+				print("Posting data")
             payload = {}
-            if value1 is not None: payload['value1'] = value1
-            if value2 is not None: payload['value2'] = value2
-            if value3 is not None: payload['value3'] = value3
+            if value1 is not None: 
+				payload['value1'] = value1
+            if value2 is not None: 
+				payload['value2'] = value2
+            if value3 is not None: 
+				payload['value3'] = value3
             url = "https://maker.ifttt.com/trigger/" + event + "/with/key/" + \
                 secrets['ifttt_key']
-            if debug: print(url)
-            response = wifi.post(url,json=payload)
+            if debug: 
+				print(url)
+            response = wifi.post(url, json=payload)
             response.close()
-            if debug: print("data sent")
-            sent=True
-        except (ValueError, RuntimeError) as e:
-            if debug: print("Failed to get data, retrying\n", e)
+            if debug: 
+				print("data sent")
+            sent = True
+        except (ValueError, RuntimeError) as err:
+            if debug: 
+				print("Failed to get data, retrying\n", err)
             if reset_wifi_on_error:
                 wifi.reset()
             else:
                 sent=True
-
