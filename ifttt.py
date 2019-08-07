@@ -51,7 +51,7 @@ __repo__ = "https://github.com/benevip/CircuitPython_ifttt.git"
 def send_message(wifi, secrets, event, debug=False,
                  reset_wifi_on_error=True, value1=None,
                  value2=None, value3=None):
-"""sent a message to the IFTTT webhook service"""
+    """sent a message to the IFTTT webhook service"""
     sent = False
     if 'ifttt_key' not in secrets:
         if debug:
