@@ -26,12 +26,28 @@ Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
 `the Adafruit library and driver bundle <https://github.com/adafruit/Adafruit_CircuitPython_Bundle>`_.
 
+Borrowed Code
+=============
+This code borrows heavily from the Adafruit Internet connect examples here: https://learn.adafruit.com/adafruit-pyportal/internet-connect Thanks Adafruit!
+
 Usage Example
 =============
 
 Sending an event with a value1 of 'touchy touchy' when a PyPortal is touched:
 
 The event name (circuitpylink in the below example) has to match what you have setup in IFTTT, and value1, value2 and value3 are varibles that you can pass through your IFTTT applet. See example_applet.png for details of how this should be set up.
+
+You'll need a secrets file that includes your SSID, Wifi password and ifttt key. This should be structured something like this:
+.. code-block:: python
+
+	secrets = {
+		'ssid' : 'XXX',
+		'password' : 'XXX',
+		'timezone' : "XXX",
+		'ifttt_key' : 'XXX'
+		}
+
+Here's the code for the example:
 
 .. code-block:: python
 
