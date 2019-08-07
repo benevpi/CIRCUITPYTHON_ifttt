@@ -52,25 +52,30 @@ Implementation Notes
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/benevip/CircuitPython_ifttt.git"
 
-def send_message(wifi, secrets, event, value1=None, value2=None, value3=None):
+def send_message(wifi, secrets, event, debug=False, 
+                 reset_wifi_on_error=True, value1=None, 
+                 value2=None, value3=None):
     sent = False
     if 'ifttt_key' not in secrets:
-        print("you need to add ifttt_key to your secrets file")
+        if debug: print("you need to add ifttt_key to your secrets file")
         return
     while not sent:
         try:
-            print("Posting data...", end='')
+            if debug: print("Posting data...", end='')
             payload = {}
             if value1 is not None: payload['value1'] = value1
             if value2 is not None: payload['value2'] = value2
             if value3 is not None: payload['value3'] = value3
             url = "https://maker.ifttt.com/trigger/" + event + "/with/key/"+secrets['ifttt_key']
+            if debug: print(url)
             response = wifi.post(url,json=payload)
             response.close()
-            print("data sent")
+            if debug: print("data sent")
             sent=True
         except (ValueError, RuntimeError) as e:
-            print("Failed to get data, retrying\n", e)
-            wifi.reset()
-            continue
+            if debug: print("Failed to get data, retrying\n", e)
+            if reset_wifi_on_error:
+                wifi.reset()
+            else:
+                sent = True
 
