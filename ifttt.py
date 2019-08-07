@@ -61,26 +61,26 @@ def send_message(wifi, secrets, event, debug=False,
     while not sent:
         try:
             if debug: 
-				print("Posting data")
+                print("Posting data")
             payload = {}
             if value1 is not None: 
-				payload['value1'] = value1
+                payload['value1'] = value1
             if value2 is not None: 
-				payload['value2'] = value2
+                payload['value2'] = value2
             if value3 is not None: 
-				payload['value3'] = value3
+                payload['value3'] = value3
             url = "https://maker.ifttt.com/trigger/" + event + "/with/key/" + \
                 secrets['ifttt_key']
             if debug: 
-				print(url)
+                print(url)
             response = wifi.post(url, json=payload)
             response.close()
             if debug: 
-				print("data sent")
+                print("data sent")
             sent = True
         except (ValueError, RuntimeError) as err:
             if debug: 
-				print("Failed to get data, retrying\n", err)
+                print("Failed to get data, retrying\n", err)
             if reset_wifi_on_error:
                 wifi.reset()
             else:
