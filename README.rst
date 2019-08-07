@@ -63,7 +63,7 @@ Sending an event with a value1 of 'touchy touchy' when a PyPortal is touched:
 
 The event name (circuitpylink in the below example) has to match what you have setup in IFTTT, and value1, value2 and value3 are varibles that you can pass through your IFTTT app.
 
-.. code-block:: python3
+.. code-block:: python
 	import time
 	import board
 	import busio
