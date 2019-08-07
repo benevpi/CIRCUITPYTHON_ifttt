@@ -99,8 +99,6 @@ Here's the code for the example:
 			ifttt.send_message(wifi, secrets, "circuitpylink", debug=True, value1="touchy touchy")
 			time.sleep(10)
 
-
-
 Contributing
 ============
 
