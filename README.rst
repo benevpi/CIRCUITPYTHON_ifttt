@@ -65,9 +65,9 @@ Here's the code for the example:
 
 	#setup touchscreen
 	ts = adafruit_touchscreen.Touchscreen(board.TOUCH_XL, board.TOUCH_XR,
-										  board.TOUCH_YD, board.TOUCH_YU,
-										  calibration=((7000,59000),(8700,55000)),
-										  size=(320,240))
+					board.TOUCH_YD, board.TOUCH_YU,
+					calibration=((7000,59000),(8700,55000)),
+					size=(320,240))
 	 
 	# Get wifi details and more from a secrets.py file
 	try:
