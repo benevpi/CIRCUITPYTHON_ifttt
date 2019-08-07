@@ -26,6 +26,8 @@ Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
 `the Adafruit library and driver bundle <https://github.com/adafruit/Adafruit_CircuitPython_Bundle>`_.
 
+You'll need a Circuit Python board with an ESP wifi module. We developed this on a PyPortal, but expect other boards to work as well provided you can use ESPSPI_WiFiManager. 
+
 Borrowed Code
 =============
 This code borrows heavily from the Adafruit Internet connect examples here: https://learn.adafruit.com/adafruit-pyportal/internet-connect Thanks Adafruit!
