@@ -38,6 +38,7 @@ Sending an event with a value1 of 'touchy touchy' when a PyPortal is touched:
 The event name (circuitpylink in the below example) has to match what you have setup in IFTTT, and value1, value2 and value3 are varibles that you can pass through your IFTTT applet. See example_applet.png for details of how this should be set up.
 
 You'll need a secrets file that includes your SSID, Wifi password and ifttt key. This should be structured something like this:
+
 .. code-block:: python
 
 	secrets = {
